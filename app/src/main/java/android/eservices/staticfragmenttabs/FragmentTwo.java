@@ -10,24 +10,24 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-public class FragmentOne extends Fragment {
+public class FragmentTwo extends Fragment {
 
     public static final String TAB_NAME = "ADD TO COUNTER";
     private View mView;
     private CounterManagerI counterI;
 
-    public FragmentOne() {
-        //super(R.layout.fragment_one);
+
+    public FragmentTwo() {
     }
 
-    public static FragmentOne newInstance() {
-        return new FragmentOne();
+    public static FragmentTwo newInstance() {
+        return new FragmentTwo();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_one, container, false);
+        mView = inflater.inflate(R.layout.fragment_two, container, false);
         return mView;
     }
 
@@ -39,16 +39,16 @@ public class FragmentOne extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        setOnIncrementButtonClicked();
+        setOnDecrementButtonClicked();
     }
 
-    private void setOnIncrementButtonClicked(){
-        Button incBtn = mView.findViewById(R.id.button_increment);
-        incBtn.setOnClickListener(new View.OnClickListener() {
+    private void setOnDecrementButtonClicked(){
+        Button decBtn = mView.findViewById(R.id.button_decrement);
+        decBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (counterI != null)
-                    counterI.increment();
+                    counterI.decrement();
             }
         });
     }
@@ -60,4 +60,3 @@ public class FragmentOne extends Fragment {
             this.counterI = (CounterManagerI) context;
     }
 }
-
